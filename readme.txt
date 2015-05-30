@@ -1,6 +1,6 @@
 === Colorful Clicks ===
 Contributors: html5andblog, apritchard2751
-Tags: click, click animate, click effect, click style
+Tags: click, click animate, click effect, click style, click color, colorful, animation, colourful clicks, mouse pointer, pointer
 Requires at least: 4.0
 Tested up to: 4.2.2
 License: GPL2 or Later
