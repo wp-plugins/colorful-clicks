@@ -2,7 +2,7 @@
 Contributors: html5andblog, apritchard2751
 Tags: click, click animate, click effect, click style, click color, colorful, animation, colourful clicks, mouse pointer, pointer
 Requires at least: 4.0
-Tested up to: 4.2.2
+Tested up to: 4.2.3
 License: GPL2 or Later
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 

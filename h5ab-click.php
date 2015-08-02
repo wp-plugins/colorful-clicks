@@ -4,7 +4,7 @@
  * Plugin Name: Colorful Clicks
  * Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
  * Description: Make Every Click More Interesting with Colorful Clicks
- * Version: 0.1
+ * Version: 0.2
  * Author: HTML5andBeyond
  * Author URI: https://www.html5andbeyond.com/
  * License: GPL2 or Later
@@ -21,7 +21,8 @@
 
 			class H5AB_CLICK {
 
-                const _version = '0.1';
+                const _version = '0.2';
+				private $formResponse = "";
 
 				public function __construct() {
 
@@ -72,6 +73,16 @@
 					include_once(sprintf("%s/templates/h5ab-click-settings.php", H5AB_CLICK_PLUGIN_DIR));
 
 				}
+				
+				public function setFormResponse($response) {
+					$class = ($response['success']) ? 'updated' : 'error';
+				    $this->formResponse =  '<div = class="' . $class . '"><p>' . $response['message'] . '</p></div>';
+				}
+				
+				public function getFormResponse() {
+				    $fr = $this->formResponse;
+				    echo $fr;
+				}
 
                 public function validate_form_callback() {
 
@@ -80,13 +91,11 @@
 							if(wp_verify_nonce( $_POST['h5ab_click_settings_nonce'], 'h5ab_click_settings_n' )) {
 
 								$response = h5ab_click_settings();
+								
+								$this->setFormResponse($response);
 
-								add_action('admin_notices', function() use ($response) {
-											$class = ($response['success']) ? 'updated' : 'error';
-				?>
-													<div class="<?php echo $class; ?>"><p><?php echo $response['message']; ?></p></div>
-				<?php		});
-
+								add_action('admin_notices',  array($this, 'getFormResponse'));
+					
 							} else {
 								wp_die("You do not have access to this page");
 							}
